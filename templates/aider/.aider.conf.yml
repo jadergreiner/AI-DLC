@@ -1,0 +1,4 @@
+read: CONVENTIONS.md
+auto-commits: false
+lint-cmd: npm run lint
+test-cmd: npm test

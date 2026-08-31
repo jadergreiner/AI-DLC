@@ -1,0 +1,10 @@
+# Windsurf Rules - AI-DLC Framework
+
+This project adheres to the AI-DLC (AI-Driven Development Life Cycle) standard.
+
+## Rules of Engagement
+- Assess complexity: Select **Full Track** (Inception ➔ Construction ➔ Operations) for features/refactoring; select **Fast Track** for small fixes.
+- For Full Track tasks, maintain living documentation under `aidlc-docs/`.
+- Break construction into atomic Units of Work.
+- Ensure automated tests accompany code changes. Verify using project build and test tools before concluding tasks.
+- Keep secrets safe: zero hardcoded credentials.

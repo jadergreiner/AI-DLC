@@ -1,0 +1,10 @@
+# Cline & Roo Code AI-DLC Rules
+
+Follow the AI-DLC (AI-Driven Development Life Cycle) framework:
+
+- Determine task mode:
+  - **Full Track**: Generate/update `aidlc-docs/requirements.md`, `aidlc-docs/architecture.md`, and `aidlc-docs/progress-tracker.md`. Seek approval before modifying source code.
+  - **Fast Track**: Minor edits or quick bug fixes can proceed with direct testing and minimal ceremony.
+- Execute one Unit of Work at a time. Never mix multiple responsibilities in a single commit/step.
+- Run tests and linters to verify changes before marking any task as complete.
+- Verify security (no hardcoded secrets) and maintain operations notes in `aidlc-docs/operations-guide.md` if deployment changes occur.
