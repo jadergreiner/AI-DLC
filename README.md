@@ -20,7 +20,8 @@
 O **AI-DLC (AI-Driven Development Life Cycle)** é uma evolução e adaptação agnóstica de nuvem inspirada no pioneiro [`awslabs/aidlc-workflows`](https://github.com/awslabs/aidlc-workflows).
 
 Enquanto o fluxo tradicional de desenvolvimento presume que desenvolvedores humanos possuem contexto tácito, os agentes de inteligência artificial demandam:
-- **Alinhamento antes do código**: Planejamento arquitetural e requisitos claros para evitar alucinações.
+- **Refinamento e Alinhamento antes do código**: Diálogo interativo para validar premissas, riscos e decisões antes de tocar no código.
+- **Hard Approval Gate Mandatório**: Proibição estrita de escrever código antes da aprovação explícita do desenvolvedor humano.
 - **Decomposição em Unidades Atômicas**: Implementação isolada por tarefa para não poluir o repositório com edições descontroladas.
 - **Verificação Contínua**: Testes automatizados obrigatórios (TDD), linters e auditorias estáticas de segurança.
 - **Rastreabilidade e Governança**: Documentação viva centralizada na pasta `aidlc-docs/`.
@@ -31,26 +32,27 @@ Enquanto o fluxo tradicional de desenvolvimento presume que desenvolvedores huma
 
 ```mermaid
 graph LR
-    subgraph FASE 1: INCEPTION
-        REQ[1. Requisitos] --> ARC[2. Arquitetura]
-        ARC --> UOW[3. Units of Work]
+    subgraph FASE 1: INCEPTION & REFINEMENT
+        REQ[1. Requisitos & Perguntas] --> ARC[2. Arquitetura & Trade-offs]
+        ARC --> UOW[3. Units of Work PROPOSED]
+        UOW --> REF[4. Refinamento com Humano]
     end
 
-    subgraph GATE
-        GATE_IN[Aprovação do Usuário]
+    subgraph MANDATORY GATE
+        GATE_IN[🛑 Hard Stop: Aprovação Explícita]
     end
 
     subgraph FASE 2: CONSTRUCTION
-        TDD[4. TDD / Testes] --> IMPL[5. Implementação Atômica]
-        IMPL --> LINT[6. Linters & Verificação]
+        TDD[5. TDD / Testes] --> IMPL[6. Implementação Atômica]
+        IMPL --> LINT[7. Linters & Verificação]
     end
 
     subgraph FASE 3: OPERATIONS
-        SEC[7. Auditoria de Segurança] --> OBS[8. Observabilidade]
-        OBS --> REL[9. Guia de Operações]
+        SEC[8. Auditoria de Segurança] --> OBS[9. Observabilidade]
+        OBS --> REL[10. Guia de Operações]
     end
 
-    UOW --> GATE_IN
+    REF --> GATE_IN
     GATE_IN --> TDD
     LINT -.->|Próxima Unit| TDD
     LINT -->|Todas Concluídas| SEC
@@ -60,8 +62,9 @@ graph LR
 
 | Modo | Cenário Indicado | Fases Executadas | Artefatos Gerados |
 |---|---|---|---|
-| **Full Track** | Novas funcionalidades, refatorações amplas, novos módulos ou serviços | Inception ➔ Gate de Aprovação ➔ Construction ➔ Operations | `requirements.md`, `architecture.md`, `progress-tracker.md`, `operations-guide.md` |
-| **Fast Track** | Correção de bugs pontuais, ajustes simples de UI/CSS ou texto | Inception Leve ➔ Implementação Direta com Teste de Regressão | Resumo no chat com evidência de testes |
+| **Full Track** | Novas funcionalidades, refatorações amplas, novos módulos ou serviços | Inception & Refinamento ➔ **Hard Approval Gate** ➔ Construction ➔ Operations | `requirements.md`, `architecture.md`, `progress-tracker.md`, `operations-guide.md` |
+| **Fast Track** | Correção estritamente isolada em arquivo único com teste imediato | Diagnóstico Conciso ➔ Validação Breve ➔ Implementação com Teste de Regressão | Resumo no chat com evidência de testes |
+
 
 ---
 

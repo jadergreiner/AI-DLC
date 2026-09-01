@@ -3,8 +3,10 @@
 Follow the AI-DLC (AI-Driven Development Life Cycle) framework:
 
 - Determine task mode:
-  - **Full Track**: Generate/update `aidlc-docs/requirements.md`, `aidlc-docs/architecture.md`, and `aidlc-docs/progress-tracker.md`. Seek approval before modifying source code.
-  - **Fast Track**: Minor edits or quick bug fixes can proceed with direct testing and minimal ceremony.
-- Execute one Unit of Work at a time. Never mix multiple responsibilities in a single commit/step.
+  - **Full Track**: Generate/update `aidlc-docs/requirements.md`, `aidlc-docs/architecture.md`, and `aidlc-docs/progress-tracker.md`.
+  - **MANDATORY HARD STOP**: Present the Inception artifacts and STOP the turn. Never write or modify source code before receiving explicit user approval.
+  - **Fast Track**: Strictly for isolated single-file fixes. Propose intent, execute with tests, and summarize.
+- Execute one Unit of Work at a time only AFTER approval is granted. Never mix multiple responsibilities in a single step.
 - Run tests and linters to verify changes before marking any task as complete.
 - Verify security (no hardcoded secrets) and maintain operations notes in `aidlc-docs/operations-guide.md` if deployment changes occur.
+

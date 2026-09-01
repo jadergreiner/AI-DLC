@@ -35,18 +35,22 @@ O fluxo de trabalho do AI-DLC é estruturado em **Três Fases Adaptativas**, com
 └────────────────────────────────────────────────────────┘
 ```
 
-### Fase 1: Concepção (Inception)
+### Fase 1: Concepção & Refinamento (Inception & Refinement)
 1. **Engenharia de Requisitos**:
    - Mapeamento de dores, histórias de usuário, requisitos funcionais e não funcionais.
    - Geração de `aidlc-docs/requirements.md`.
-2. **Design Arquitetural**:
-   - Definição de contratos de API, modelos de dados, diagramas de sequência/componentes e trade-offs.
+2. **Design Arquitetural & Avaliação de Trade-offs**:
+   - Definição de contratos de API, modelos de dados, diagramas de arquitetura, riscos e alternativas avaliadas.
    - Geração de `aidlc-docs/architecture.md`.
 3. **Plano de Decomposição (Units of Work)**:
-   - Quebra da entrega em tarefas atômicas sequenciais.
+   - Quebra da entrega em tarefas atômicas sequenciais em estado `[PROPOSED]`.
    - Inicialização do `aidlc-docs/progress-tracker.md`.
-4. **Portão de Aprovação**:
-   - O agente **interrompe a execução** e solicita validação do usuário antes de mexer no código.
+4. **Refinamento Interativo com o Usuário**:
+   - O agente destaca premissas, trade-offs e limites de escopo (In Scope / Out of Scope), formulando perguntas direcionadas para o desenvolvedor.
+5. **MANDATORY HARD STOP (Portão de Aprovação Mandatório)**:
+   - O agente **interrompe a execução imediatamente** após apresentar o plano e aguarda autorização explícita do desenvolvedor humano.
+   - É **estritamente proibido** criar ou alterar qualquer arquivo de código-fonte de implementação antes da aprovação do usuário.
+
 
 ---
 

@@ -3,8 +3,10 @@
 This project adheres to the AI-DLC (AI-Driven Development Life Cycle) standard.
 
 ## Rules of Engagement
-- Assess complexity: Select **Full Track** (Inception ➔ Construction ➔ Operations) for features/refactoring; select **Fast Track** for small fixes.
+- Assess complexity: Select **Full Track** (Inception & Refinement ➔ Construction ➔ Operations) for features/refactoring; select **Fast Track** for small single-file fixes.
 - For Full Track tasks, maintain living documentation under `aidlc-docs/`.
-- Break construction into atomic Units of Work.
+- **Mandatory Hard Stop**: During Inception, present requirements, architecture trade-offs, and Units of Work. STOP and obtain explicit user approval before writing ANY implementation code.
+- Break construction into atomic Units of Work. Implement one at a time.
 - Ensure automated tests accompany code changes. Verify using project build and test tools before concluding tasks.
 - Keep secrets safe: zero hardcoded credentials.
+

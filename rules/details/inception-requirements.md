@@ -47,8 +47,27 @@ In the AI-DLC framework, the **Requirements** stage prevents misunderstandings b
 
 ---
 
-## 3. Guidelines for Agents
+## 3. Human-in-the-Loop Refinement Cycle
 
-- If requirements are ambiguous or contradictory, **ask targeted questions** to the developer before assuming.
-- Do not add speculative "nice-to-have" features that were not requested.
-- Ensure every functional requirement has a testable acceptance criterion.
+Requirements engineering in AI-DLC is an **interactive dialogue**, not a one-way dump. The agent must actively engage the human developer to refine and validate the specification:
+
+1. **Uncover Hidden Assumptions**:
+   - Surface all implicit technical or business assumptions.
+   - Present them clearly in `Assumptions & Open Questions`.
+2. **Formulate Targeted Validation Questions**:
+   - When trade-offs or ambiguities exist, present concise, actionable questions (or structured multiple-choice options) to the developer.
+   - Never make critical architectural or product assumptions unilaterally.
+3. **Confirm Scope Boundaries**:
+   - Explicitly define what is **In Scope** and what is **Out of Scope** to prevent scope creep.
+   - Confirm with the user that the scope boundaries meet expectations.
+
+---
+
+## 4. Guidelines & Hard Stop for Agents
+
+- **Interactive Stop**: Upon drafting the requirements, the agent **MUST STOP** its turn and present the key points, questions, and scope boundaries to the user.
+- **Zero Premature Code**: Do not create or edit production source files while requirements are in refinement.
+- **No Speculative Additions**: Do not add speculative "nice-to-have" features that were not requested or approved.
+- **Verifiability**: Ensure every functional requirement has a testable acceptance criterion mapped to future automated tests.
+- **Wait for Explicit Approval**: Proceed to architectural finalization and construction only after the developer gives explicit consent.
+

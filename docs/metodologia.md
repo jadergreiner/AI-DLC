@@ -22,13 +22,16 @@ O AI-DLC resolve isso ao transformar o agente de codificação em um engenheiro 
 
 ## 2. Princípios Fundamentais do AI-DLC
 
-1. **Planejar Antes de Codificar (Plan Before Code)**:
-   - Toda alteração relevante requer levantamento claro de requisitos e design arquitetural documentado.
-2. **Unidades de Trabalho Atômicas (Atomic Units of Work)**:
+1. **Planejar e Refinar Antes de Codificar (Plan & Refine Before Code)**:
+   - Toda alteração relevante requer levantamento claro de requisitos, refinamento interativo de premissas com o desenvolvedor humano e design arquitetural documentado.
+2. **Hard Approval Gate Mandatório (Zero Código Sem Aprovação)**:
+   - É estritamente proibido criar ou editar código de produção/testes na fase de Inception. O agente deve parar a resposta e aguardar aprovação explícita do desenvolvedor humano antes de iniciar a construção. A autoaprovação pelo agente é vedada.
+3. **Unidades de Trabalho Atômicas (Atomic Units of Work)**:
    - As tarefas de codificação são divididas em fatias pequenas, independentes e testáveis. O agente foca em uma unidade de cada vez.
-3. **Verificação Contínua e Automatizada (Automated Verification)**:
+4. **Verificação Contínua e Automatizada (Automated Verification)**:
    - Todo código produzido deve ser acompanhado por testes automatizados e passar em linters, checagens de tipos e compilação.
-4. **Governança Transparente (`aidlc-docs/`)**:
+5. **Governança Transparente (`aidlc-docs/`)**:
    - As decisões, requisitos, checklists de progresso e procedimentos de operação são mantidos em uma pasta padrão (`aidlc-docs/`), versionada com o repositório.
-5. **Neutralidade e Abertura**:
+6. **Neutralidade e Abertura**:
    - Livre de dependências de um único ecossistema proprietário. O fluxo funciona perfeitamente com GCP, AWS, Azure, on-premise ou desenvolvimento local.
+

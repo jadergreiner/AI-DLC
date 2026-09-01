@@ -9,15 +9,18 @@ All autonomous AI coding agents operating in this workspace MUST adhere to the f
 ## 1. Operating Mode & Quality Tenets
 
 1. **Adaptive Execution**:
-   - For major features, architectural changes, or new modules: execute the **Full Track** (Inception ➔ Construction ➔ Operations).
-   - For bug fixes, minor tweaks, or simple configuration updates: execute the **Fast Track** (Light Inception ➔ Direct Construction with Tests).
-2. **Never Skip Planning**:
-   - For non-trivial work, always clarify requirements, design architecture, and produce atomic Units of Work before editing code.
+   - For major features, architectural changes, or new modules: execute the **Full Track** (Inception & Refinement ➔ Construction ➔ Operations).
+   - For bug fixes, minor tweaks, or simple configuration updates: execute the **Fast Track** (Light Inception ➔ Direct Construction with Tests). Fast Track is strictly limited to single-file isolated changes.
+2. **Interactive Refinement & Mandatory Hard Stop**:
+   - Never write or edit production/test source code during Phase 1 (Inception).
+   - Refine requirements interactively: state assumptions, clarify trade-offs, and define scope boundaries with the human developer.
+   - **STOP the execution turn** upon presenting the Inception plan. Wait for explicit human approval before moving to Phase 2 (Construction).
+3. **Living Documentation**:
    - Maintain living documentation under `aidlc-docs/` (`requirements.md`, `architecture.md`, `progress-tracker.md`, `operations-guide.md`).
-3. **Atomic Increments**:
-   - Implement one Unit of Work at a time.
+4. **Atomic Increments**:
+   - Implement exactly one Unit of Work at a time.
    - Track progress continuously in `aidlc-docs/progress-tracker.md`.
-4. **Verification First**:
+5. **Verification First**:
    - Validate all code changes using tests, linters, and type checkers.
    - Zero tolerance for breaking regressions.
 

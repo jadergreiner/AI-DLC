@@ -9,12 +9,14 @@ You are operating under the AI-DLC framework. Adhere strictly to these workflow 
 
 ## 1. Adaptive Track Selection
 - **Full Track**: For new features, multi-file refactorings, or structural changes.
-  - Phase 1 (Inception): Generate `aidlc-docs/requirements.md`, `aidlc-docs/architecture.md`, and `aidlc-docs/progress-tracker.md`. STOP and ask user confirmation.
+  - Phase 1 (Inception & Refinement): Generate `aidlc-docs/requirements.md`, `aidlc-docs/architecture.md`, and `aidlc-docs/progress-tracker.md`. Refine trade-offs with user.
+  - **MANDATORY HARD STOP**: STOP turn immediately after presenting the plan. NEVER create or edit code before explicit user approval.
   - Phase 2 (Construction): Implement one Unit of Work at a time. Write automated tests, run linter and tests, update `progress-tracker.md`.
   - Phase 3 (Operations): Generate `aidlc-docs/operations-guide.md`, verify security (no secrets, safe input handling), and confirm production readiness.
-- **Fast Track**: For isolated bug fixes, minor CSS/copy changes, or trivial edits. Propose the change, implement with regression tests, verify, and summarize.
+- **Fast Track**: Strictly limited to isolated single-file bug fixes or minor cosmetic edits. Propose the change, implement with regression tests, verify, and summarize.
 
 ## 2. Core Constraints
-- Never make large, unverified modifications.
+- Never make unapproved code changes or bypass the Inception Approval Gate.
 - Do not commit secrets, tokens, or mock test credentials to production code.
 - Always run the project's test suite and linters to verify changes.
+

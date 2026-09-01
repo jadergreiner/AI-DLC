@@ -59,6 +59,20 @@ interface UserProfile {
 ---
 
 ## 3. Cloud & Framework Neutrality
-
+ 
 - Avoid vendor-locked services when standard open interfaces (e.g., standard SQL, OpenTelemetry, S3-compatible storage, REST/gRPC) can be used.
 - Explicitly isolate cloud-provider specific adapters behind domain interfaces.
+
+---
+
+## 4. Human Refinement & Architecture Approval Gate
+
+1. **Evaluate Alternatives Openly**:
+   - Present at least one alternative design when making significant architectural choices.
+   - Explain why the chosen pattern was favored and what trade-offs it brings (complexity vs. speed, flexibility vs. overhead).
+2. **Review Data Contracts with the Developer**:
+   - Validate schema definitions, API routes, and error envelopes with the user before finalizing `aidlc-docs/architecture.md`.
+3. **Hard Stop Before Implementation**:
+   - Do NOT write temporary implementation files, prototype code, or placeholder modules in the codebase during architecture design.
+   - The architecture artifact must be reviewed alongside requirements before the human gives clearance for Phase 2 (Construction).
+

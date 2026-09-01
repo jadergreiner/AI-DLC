@@ -21,15 +21,16 @@ A Unit of Work is a self-contained increment of software engineering that can be
 Each unit advances through sequential states recorded in `aidlc-docs/progress-tracker.md`:
 
 ```
-[PENDING] ──► [IN_PROGRESS] ──► [VALIDATING] ──► [COMPLETED]
-                     │                 │
-                     └──► [BLOCKED] ◄──┘
+[PROPOSED] ──► [PENDING] ──► [IN_PROGRESS] ──► [VALIDATING] ──► [COMPLETED]
+(Inception)   (Approved)             │                 │
+                                     └──► [BLOCKED] ◄──┘
 ```
 
-- **PENDING**: Defined during Inception, waiting for execution.
-- **IN_PROGRESS**: Currently being actively modified by the agent. Only **one** unit can be in progress at any time.
+- **PROPOSED**: Drafted during Inception. Subject to human refinement and feedback.
+- **PENDING**: Approved by the human developer at the Inception Gate, ready to be picked up in Construction.
+- **IN_PROGRESS**: Currently being actively implemented. Only **one** unit can be in progress at any time.
 - **VALIDATING**: Code is written; running test suites, linters, and type checkers.
-- **COMPLETED**: All acceptance criteria satisfied, tests pass, and review clean.
+- **COMPLETED**: All acceptance criteria satisfied, tests pass, and code review clean.
 - **BLOCKED**: Requires external dependency or user clarification before continuing.
 
 ---
@@ -42,7 +43,15 @@ Each unit advances through sequential states recorded in `aidlc-docs/progress-tr
 ## Overview
 - **Project/Feature**: <Feature Name>
 - **Current Track**: Full Track
-- **Status**: Construction Phase (2/5 Units Completed)
+- **Status**: Construction Phase (1/3 Units Completed)
+
+---
+
+## Inception Gate Checklist
+- [x] Requirements captured and refined with user in `aidlc-docs/requirements.md`
+- [x] Architecture & trade-offs documented in `aidlc-docs/architecture.md`
+- [x] Atomic Units of Work decomposed with measurable criteria
+- [x] **Explicit Human Approval Granted** ✅
 
 ---
 
@@ -77,6 +86,8 @@ Each unit advances through sequential states recorded in `aidlc-docs/progress-tr
 
 ## 4. Execution Rules for Coding Agents
 
-1. **Strict Focus**: When working on `UoW-02`, do not prematurely write code for `UoW-03` or refactor unrelated modules.
-2. **State Updates**: Always update `progress-tracker.md` when transitioning state.
-3. **Rollback on Failure**: If an approach fails tests and causes regressions, revert to the last working checkpoint before trying an alternative.
+1. **No Construction Without Approval**: A UoW can NEVER be moved from `[PROPOSED]` to `[IN_PROGRESS]` without explicit human approval of the Inception Gate.
+2. **Strict Focus**: When working on `UoW-02`, do not prematurely write code for `UoW-03` or refactor unrelated modules.
+3. **State Updates**: Always update `progress-tracker.md` immediately when transitioning states.
+4. **Rollback on Failure**: If an approach fails tests and causes regressions, revert to the last working checkpoint before trying an alternative.
+
